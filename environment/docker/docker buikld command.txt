@@ -1,1 +1,5 @@
-docker build github.com/s-archer/infra-as-code/environment/docker/
+Need to copy the dockerfile from here (.../infra-as-code/environment/docker/dockerfile) to root of project (.../infra-as-code/)
+
+Then run:
+
+docker build github.com/s-archer/infra-as-code/
