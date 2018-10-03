@@ -1,0 +1,1 @@
+docker build github.com/s-archer/infra-as-code/environment/docker/
