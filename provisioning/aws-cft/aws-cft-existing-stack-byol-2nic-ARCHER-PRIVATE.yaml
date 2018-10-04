@@ -1,0 +1,29 @@
+- name: Provision ec2 instances based on the environment
+  hosts: localhost
+  connection: local
+  gather_facts: no
+
+  tasks:
+  - name: launch ansible cloudformation example
+    cloudformation:
+      stack_name: "ansible-cloudformation-f5-existing-stack-byol-2nic-bigip"
+      state: "absent"
+      ec2_access_key: "AKIAIZ3JD2MOZ6RL7YWA"
+      ec2_secret_key: "DntyFKltGYJYa87XFXdQdM4Mmp/OmEY/aevMUGiY"
+      region: "eu-west-2"
+      disable_rollback: true
+      template_url: "https://s3.amazonaws.com/f5-cft/f5-existing-stack-byol-2nic-bigip.template"
+      template_parameters:
+        imageName: "AllOneBootLocation"
+        instanceType: "m4.xlarge"
+        licenseKey1: "ENBGS-SBHQD-KUYIB-XCHEH-BMQSLBN"
+        Vpc: "vpc-0dfffb8f73f13449e"
+        managementSubnetAz1: "subnet-0cc97d670b8fc6ef1"
+        subnet1Az1: "subnet-098af3cbf86f9f8c8"
+        restrictedSrcAddress: "0.0.0.0/0"
+        restrictedSrcAddressApp: "0.0.0.0/0"
+        sshKey: "arch_public_2"
+        ntpServer: "0.pool.ntp.org"
+        timezone: "UTC"
+      tags:
+        Stack: "ansible-cloudformation-f5-existing-stack-byol-2nic-bigip"

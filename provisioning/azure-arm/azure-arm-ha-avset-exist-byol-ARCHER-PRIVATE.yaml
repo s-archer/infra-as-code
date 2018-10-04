@@ -1,0 +1,115 @@
+#------------------------------------------------------------------------------ 
+# Ansible playbook to deploy F5 ARM template for ha-avset, existing stack, BYOL
+# 
+# Stephen Archer, F5, 20-12-2017.
+#------------------------------------------------------------------------------ 
+#
+# Install pre-requisites before running ansible playbook (for F5 and Azure):
+#
+# install python-pip:
+#   sudo yum -y install epel-release
+#   sudo yum -y update
+#   sudo yum -y install python-pip python-setuptools python-netaddr python-devel
+# install the requirements:
+#   sudo pip install -U pip setuptools
+#   sudo pip install f5-sdk bigsuds
+#   sudo pip install packaging
+#   sudo pip install ansible[azure]
+#
+# No need to specify inventory file.  Just run:
+#   ansible-playbook azure-arm-deployment.yaml
+#
+# Azure paramaters required:
+#   tenant-id:              # this is your Directory ID (go to Azure Active Directory > Properties. The Directory ID is your Tenant ID)
+#   client-id:              # this is your Application ID (you need to create an Azure AD 'Application' for the BIG-IP to use)
+#   servicePrincipalSecret: # this is your application key value (create a key within your AD 'Application')
+#
+# Requires an existing network stack.  VNet should include the following three subnets:
+#   Management - 10.0.0.0/24
+#   External   - 10.0.1.0/24
+#   Internal   - 10.0.2.0/24
+#
+# For addition pre-requisites, check https://github.com/F5Networks/f5-azure-arm-templates/tree/master/supported/ha-avset/existing_stack#prerequisites
+#
+#------------------------------------------------------------------------------ 
+
+
+- hosts: localhost
+  connection: local
+  gather_facts: no
+
+  tasks:
+    - name: Create Azure Deploy
+      azure_rm_deployment:
+        state: present
+        subscription_id: 66d325ce-997e-41fe-92cc-f67a5992902c
+        resource_group_name: bigip-vnet
+        template_link: "https://raw.githubusercontent.com/F5Networks/f5-azure-arm-templates/master/supported/ha-avset/existing_stack/BYOL/azuredeploy.json"
+        location: ukwest
+        client_id: fe32098a-f492-4bf2-af80-cf86e9027ba4
+        tenant: 645123e6-0336-4dae-a86a-33f693e9fa38
+        secret: iDZd7RIjg9IjhPvj++cxC9OWQNkRHvzdLtxlV4fU7UM=
+        parameters:
+          adminUsername:
+            value: azureuser
+          adminPassword:
+            value : Azureuserf5!!
+          dnsLabel:
+            value: arch
+          instanceName:
+            value: bigip
+          instanceType:
+            value: Standard_D3_v2
+          bigIpVersion:
+            value: latest
+          imageName:
+            value: Good
+          licenseKey1:
+            value: ZPEXP-HGZCW-YSRLQ-XSDNU-DMSTQQV
+          licenseKey2:
+            value: IIEJO-HIOQV-OYLWB-JBAGZ-LADJLHP
+          numberOfExternalIps:
+            value: 1
+          vnetName:
+            value: bigip-vnet
+          vnetResourceGroupName:
+            value: bigip-vnet
+          mgmtSubnetName:
+            value: Management
+          mgmtIpAddressRangeStart:
+            value: 10.0.0.10
+          externalSubnetName:
+            value: External
+          externalIpSelfAddressRangeStart:
+            value: 10.0.1.10
+          externalIpAddressRangeStart:
+            value: 10.0.1.100
+          internalSubnetName:
+            value: Internal
+          internalIpAddressRangeStart:
+            value: 10.0.2.10
+          tenantId:
+            value: 645123e6-0336-4dae-a86a-33f693e9fa38
+          clientId:
+            value: fe32098a-f492-4bf2-af80-cf86e9027ba4
+          servicePrincipalSecret:
+            value: iDZd7RIjg9IjhPvj++cxC9OWQNkRHvzdLtxlV4fU7UM=
+          managedRoutes:
+            value: NOT_SPECIFIED
+          routeTableTag:
+            value: NOT_SPECIFIED
+          ntpServer:
+            value: 0.pool.ntp.org
+          timeZone:
+            value: UTC
+          restrictedSrcAddress:
+            value: "*"
+          tagValues:
+            value:
+              application: APP
+              cost: COST
+              environment: ENV
+              group: GROUP
+              owner: OWNER
+          allowUsageAnalytics:
+            value: 'Yes'
