@@ -3,6 +3,8 @@ git-commands
 Go to project root directory (infra-as-code)
 git clone
 git init
+git config --global user.email "my_email@domain.com"
+225  git config --global user.name "My Name"
 git add .
 git commit -m "first commit"
 git remote add origin https://github.com/s-archer/infra-as-code.git
