@@ -12,10 +12,10 @@
 	"buffers":
 	[
 		{
-			"file": "/Users/archer/Documents/projects/infra-as-code/README.md",
+			"file": "/Users/archer/Documents/projects/infra-as-code/.gitignore",
 			"settings":
 			{
-				"buffer_size": 97,
+				"buffer_size": 10,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -51,8 +51,25 @@
 		"side_bar_visible": false,
 		"status_bar_visible": false
 	},
+	"expanded_folders":
+	[
+		"/Users/archer/Documents/projects/infra-as-code",
+		"/Users/archer/Documents/projects/infra-as-code/configuration",
+		"/Users/archer/Documents/projects/infra-as-code/environment",
+		"/Users/archer/Documents/projects/infra-as-code/environment/docker",
+		"/Users/archer/Documents/projects/infra-as-code/environment/git",
+		"/Users/archer/Documents/projects/infra-as-code/orchestration",
+		"/Users/archer/Documents/projects/infra-as-code/provisioning",
+		"/Users/archer/Documents/projects/infra-as-code/provisioning/aws-cft"
+	],
 	"file_history":
 	[
+		"/Users/archer/Documents/projects/infra-as-code/.gitignore",
+		"/Users/archer/Documents/projects/infra-as-code/environment/docker/dockerfile",
+		"/Users/archer/Documents/projects/infra-as-code/dockerfile",
+		"/Users/archer/Documents/projects/infra-as-code/environment/git/git-commands.txt",
+		"/Users/archer/Documents/projects/infra-as-code/environment/docker/docker buikld command.txt",
+		"/Users/archer/Documents/projects/infra-as-code/README.md",
 		"/Users/archer/Documents/projects/santander-openshift/Santander-demoweb-ab-route.yaml",
 		"/Users/archer/Documents/PRODUCTS/F5/Cloud/OpenShift/Openshift YAML Files/Santander-demoweb-http-iapp.yaml",
 		"/Users/archer/Documents/PRODUCTS/F5/Cloud/OpenShift/Openshift YAML Files/Santander-demoweb-ab-route.yaml",
@@ -122,24 +139,24 @@
 			[
 				{
 					"buffer": 0,
-					"file": "/Users/archer/Documents/projects/infra-as-code/README.md",
+					"file": "/Users/archer/Documents/projects/infra-as-code/.gitignore",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 97,
+						"buffer_size": 10,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								97,
-								97
+								10,
+								10
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Markdown/Markdown.sublime-syntax"
+							"syntax": "Packages/Git Formats/Git Ignore.sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -157,7 +174,7 @@
 	},
 	"input":
 	{
-		"height": 36.0
+		"height": 43.0
 	},
 	"layout":
 	{
