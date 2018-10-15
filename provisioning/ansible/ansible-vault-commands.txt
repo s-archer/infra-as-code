@@ -1,0 +1,8 @@
+# to encrypt vars file: 
+
+# ansible-vault encrypt roles/test.demo/vars/main.yml
+
+
+# to run a playbook that references encrypted vars:
+
+# ansible-playbook test.demo.yml --ask-vault-pass

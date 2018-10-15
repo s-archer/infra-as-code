@@ -1,2 +1,2 @@
 ---
-# tasks file for roles/test.demo
+- copy: content="{{special_password}}" dest=/Users/archer/tmp/encrypted_output
